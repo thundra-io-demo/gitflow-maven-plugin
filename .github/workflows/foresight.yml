@@ -48,7 +48,7 @@ jobs:
                 </execution>
               </executions>
             </plugin>
-          " ${{ env.GITHUB_WORKSPACE }}/pom.xml
+          " pom.xml
 
       - name: Show pom.xml
         run: |
