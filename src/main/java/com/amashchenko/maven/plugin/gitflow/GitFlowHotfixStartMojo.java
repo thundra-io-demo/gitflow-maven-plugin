@@ -33,14 +33,14 @@ import org.codehaus.plexus.util.cli.CommandLineException;
 
 /**
  * The git flow hotfix start mojo.
- * 
+ *
  */
 @Mojo(name = "hotfix-start", aggregator = true)
 public class GitFlowHotfixStartMojo extends AbstractGitFlowMojo {
 
     /**
      * Whether to push to the remote.
-     * 
+     *
      * @since 1.6.0
      */
     @Parameter(property = "pushRemote", defaultValue = "false")
@@ -49,7 +49,7 @@ public class GitFlowHotfixStartMojo extends AbstractGitFlowMojo {
     /**
      * Branch to start hotfix in non-interactive mode. Production branch or one of
      * the support branches.
-     * 
+     *
      * @since 1.9.0
      */
     @Parameter(property = "fromBranch")
@@ -57,7 +57,7 @@ public class GitFlowHotfixStartMojo extends AbstractGitFlowMojo {
 
     /**
      * Hotfix version to use in non-interactive mode.
-     * 
+     *
      * @since 1.9.0
      */
     @Parameter(property = "hotfixVersion")
@@ -65,7 +65,7 @@ public class GitFlowHotfixStartMojo extends AbstractGitFlowMojo {
 
     /**
      * Whether to use snapshot in hotfix.
-     * 
+     *
      * @since 1.10.0
      */
     @Parameter(property = "useSnapshotInHotfix", defaultValue = "false")
@@ -78,6 +78,18 @@ public class GitFlowHotfixStartMojo extends AbstractGitFlowMojo {
      */
     @Parameter(property = "hotfixVersionDigitToIncrement")
     private Integer hotfixVersionDigitToIncrement;
+
+
+
+    private static void test(){
+        System.out.println("test");
+
+        int x = 0;
+        int y = 1;
+        int z = x + y;
+        System.out.println(z);
+
+    }
 
     /** {@inheritDoc} */
     @Override
