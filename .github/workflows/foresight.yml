@@ -27,20 +27,20 @@ jobs:
 
       - name: Add jacoco plugin to POM
         run: |
-          echo "$(xmlstarlet edit --omit-decl \
-            -s '//project/build/plugins[@xmlns="http://maven.apache.org/POM/4.0.0"]' -t elem -n 'plugin' \
-            -s '//project/build/plugins/plugin[last()]' -t elem -n 'groupId' -v 'org.jacoco' \
-            -s '//project/build/plugins/plugin[last()]' -t elem -n 'artifactId' -v 'jacoco-maven-plugin' \
-            -s '//project/build/plugins/plugin[last()]' -t elem -n 'version' -v '0.8.8' \
-            -s '//project/build/plugins/plugin[last()]' -t elem -n 'executions' \
-            -s '//project/build/plugins/plugin[last()]/executions' -t elem -n 'execution' \
-            -s '//project/build/plugins/plugin[last()]/executions/execution[last()]' -t elem -n 'goals'\
-            -s '//project/build/plugins/plugin[last()]/executions/execution[last()]/goals' -t elem -n 'goal' -v 'prepare-agent' \
-            -s '//project/build/plugins/plugin[last()]/executions' -t elem -n 'execution' \
-            -s '//project/build/plugins/plugin[last()]/executions/execution[last()]' -t elem -n 'id' -v 'report' \
-            -s '//project/build/plugins/plugin[last()]/executions/execution[last()]' -t elem -n 'phase' -v 'prepare-package' \
-            -s '//project/build/plugins/plugin[last()]/executions/execution[last()]' -t elem -n 'goals' \
-            -s '//project/build/plugins/plugin[last()]/executions/execution[last()]/goals' -t elem -n 'goal' -v 'report' \
+          echo "$(xmlstarlet edit --omit-decl -N x="http://maven.apache.org/POM/4.0.0" \
+            -s '//x:build/x:plugins' -t elem -n 'plugin' \
+            -s '//x:build/x:plugins/plugin[last()]' -t elem -n 'groupId' -v 'org.jacoco' \
+            -s '//x:build/x:plugins/plugin[last()]' -t elem -n 'artifactId' -v 'jacoco-maven-plugin' \
+            -s '//x:build/x:plugins/plugin[last()]' -t elem -n 'version' -v '0.8.8' \
+            -s '//x:build/x:plugins/plugin[last()]' -t elem -n 'executions' \
+            -s '//x:build/x:plugins/plugin[last()]/executions' -t elem -n 'execution' \
+            -s '//x:build/x:plugins/plugin[last()]/executions/execution[last()]' -t elem -n 'goals'\
+            -s '//x:build/x:plugins/plugin[last()]/executions/execution[last()]/goals' -t elem -n 'goal' -v 'prepare-agent' \
+            -s '//x:build/x:plugins/plugin[last()]/executions' -t elem -n 'execution' \
+            -s '//x:build/x:plugins/plugin[last()]/executions/execution[last()]' -t elem -n 'id' -v 'report' \
+            -s '//x:build/x:plugins/plugin[last()]/executions/execution[last()]' -t elem -n 'phase' -v 'prepare-package' \
+            -s '//x:build/x:plugins/plugin[last()]/executions/execution[last()]' -t elem -n 'goals' \
+            -s '//x:build/x:plugins/plugin[last()]/executions/execution[last()]/goals' -t elem -n 'goal' -v 'report' \
             pom.xml | xmlstarlet format --indent-tab)" > app.xml
 
 
