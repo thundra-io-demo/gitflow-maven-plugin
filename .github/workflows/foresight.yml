@@ -27,7 +27,6 @@ jobs:
 
       - name: Add jacoco plugin to POM
         run: |
-          #  add jacoco plugin to POM
           xmlstarlet ed -L -u "//project/build/plugins/plugin[@artifactId='jacoco-maven-plugin']" -v "
             <plugin>
               <groupId>org.jacoco</groupId>
@@ -48,7 +47,7 @@ jobs:
                 </execution>
               </executions>
             </plugin>
-          " ${{ env.GITHUB_WORKSPACE }}/pom.xml
+          " pom.xml > pom2.xml
 
       - name: Show pom.xml
         run: |
