@@ -47,12 +47,11 @@ jobs:
                 </execution>
               </executions>
             </plugin>
-          " pom.xml > pom2.xml
+          " pom.xml
 
-      - name: Show pom2.xml
+      - name: Show POM
         run: |
-          cat pom2.xml
-
+          cat pom.xml
 
       # - name: Foresight Test Report Uploader
       #   if: always()
