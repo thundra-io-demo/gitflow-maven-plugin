@@ -27,7 +27,7 @@ jobs:
 
       - name: Add jacoco plugin to POM
         run: |
-          bash -c "sudo xmlstarlet ed -L -u \"//project/build/plugins/plugin[@artifactId='jacoco-maven-plugin']\" -v \"
+          sudo xmlstarlet ed -L -u \"//project/build/plugins/plugin[@artifactId='jacoco-maven-plugin']\" -v \"
             <plugin>
               <groupId>org.jacoco</groupId>
               <artifactId>jacoco-maven-plugin</artifactId>
@@ -47,11 +47,11 @@ jobs:
                 </execution>
               </executions>
             </plugin>
-          \" ./pom.xml"
+          \" pom.xml > pom2.xml
 
       - name: Show POM
         run: |
-          cat pom.xml
+          cat pom2.xml
 
       # - name: Foresight Test Report Uploader
       #   if: always()
