@@ -21,11 +21,34 @@ jobs:
           java-version: '11'
           distribution: 'temurin'
 
-      - name: Add jacoco plugin to POM
-        uses: whelk-io/maven-settings-xml-action@v4
-        with:
-          plugins: '[{"groupId": "org.jacoco", "artifactId": "jacoco-maven-plugin", "version": "0.8.8", "executions": [{"goals": ["prepare-agent"]}, {"id": "report", "phase": "prepare-package", "goals": ["report"]}]}]'
 
+      - name: Install XMLStartLet
+        run: sudo apt-get install xmlstarlet
+
+      - name: Add jacoco plugin to POM
+        run: |
+          #  add jacoco plugin to POM
+          xmlstarlet ed -L -u "//project/build/plugins/plugin[@artifactId='jacoco-maven-plugin']" -v "
+            <plugin>
+              <groupId>org.jacoco</groupId>
+              <artifactId>jacoco-maven-plugin</artifactId>
+              <version>0.8.8</version>
+              <executions>
+                <execution>
+                  <goals>
+                    <goal>prepare-agent</goal>
+                  </goals>
+                </execution>
+                <execution>
+                  <id>report</id>
+                  <phase>prepare-package</phase>
+                  <goals>
+                    <goal>report</goal>
+                  </goals>
+                </execution>
+              </executions>
+            </plugin>
+          " ${{ env.GITHUB_WORKSPACE }}/pom.xml
 
       - name: Show pom.xml
         run: |
