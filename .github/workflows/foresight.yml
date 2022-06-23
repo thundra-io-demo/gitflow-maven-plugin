@@ -1,6 +1,9 @@
 name: Foresight Integration
 
-on: [push, workflow_dispatch]
+on:
+    schedule:
+      - cron: "0 2 * * *"
+    workflow_dispatch:
 
 env:
   BRANCH_NAME: auto-upstream-merge
