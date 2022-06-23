@@ -41,7 +41,7 @@ jobs:
             -s '//project/build/plugins/plugin[last()]/executions/execution[last()]' -t elem -n 'phase' -v 'prepare-package' \
             -s '//project/build/plugins/plugin[last()]/executions/execution[last()]' -t elem -n 'goals' \
             -s '//project/build/plugins/plugin[last()]/executions/execution[last()]/goals' -t elem -n 'goal' -v 'report' \
-            pom.xml | xmlstarlet format --indent-tab)" > pom.xml.tmp && mv pom.xml.tmp pom.xml
+            pom.xml | xmlstarlet format --indent-tab)" > pom.xml.tmp && rm pom.xml && mv pom.xml.tmp pom.xml
 
       - name: Show POM
         run: |
