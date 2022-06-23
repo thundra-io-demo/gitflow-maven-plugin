@@ -49,9 +49,9 @@ jobs:
             </plugin>
           " pom.xml > pom2.xml
 
-      - name: Show pom.xml
+      - name: Show pom2.xml
         run: |
-          cat pom.xml
+          cat pom2.xml
 
 
       # - name: Foresight Test Report Uploader
