@@ -25,9 +25,12 @@ jobs:
       - name: Install XMLStartLet
         run: sudo apt-get install xmlstarlet
 
+      - name: Copy pom to pom2
+        run: cp pom.xml pom2.xml
+
       - name: Add jacoco plugin to POM
         run: |
-          sudo xmlstarlet ed -L -u \"//project/build/plugins/plugin[@artifactId='jacoco-maven-plugin']\" -v \"
+          xmlstarlet ed -L -u "//project/build/plugins/plugin[@artifactId='jacoco-maven-plugin']" -v "
             <plugin>
               <groupId>org.jacoco</groupId>
               <artifactId>jacoco-maven-plugin</artifactId>
@@ -47,7 +50,7 @@ jobs:
                 </execution>
               </executions>
             </plugin>
-          \" pom.xml > pom2.xml
+          " pom2.xml
 
       - name: Show POM
         run: |
