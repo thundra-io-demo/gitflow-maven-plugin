@@ -28,31 +28,30 @@ jobs:
       - name: Copy pom to pom2
         run: cp pom.xml pom2.xml
 
+
       - name: Add jacoco plugin to POM
-        uses: Mudlet/xmlstarlet-action@master
-        with:
-          args: |
-            ed -L -u "//project/build/plugins/plugin[@artifactId='jacoco-maven-plugin']" -v "
-              <plugin>
-                <groupId>org.jacoco</groupId>
-                <artifactId>jacoco-maven-plugin</artifactId>
-                <version>0.8.8</version>
-                <executions>
-                  <execution>
-                    <goals>
-                      <goal>prepare-agent</goal>
-                    </goals>
-                  </execution>
-                  <execution>
-                    <id>report</id>
-                    <phase>prepare-package</phase>
-                    <goals>
-                      <goal>report</goal>
-                    </goals>
-                  </execution>
-                </executions>
-              </plugin>
-            " pom2.xml
+        run: |
+          xmlstarlet ed -L -u "//project/build/plugins/plugin[@artifactId='jacoco-maven-plugin']" -v "
+            <plugin>
+              <groupId>org.jacoco</groupId>
+              <artifactId>jacoco-maven-plugin</artifactId>
+              <version>0.8.8</version>
+              <executions>
+                <execution>
+                  <goals>
+                    <goal>prepare-agent</goal>
+                  </goals>
+                </execution>
+                <execution>
+                  <id>report</id>
+                  <phase>prepare-package</phase>
+                  <goals>
+                    <goal>report</goal>
+                  </goals>
+                </execution>
+              </executions>
+            </plugin>
+          " pom2.xml
 
       - name: Show POM
         run: |
