@@ -27,7 +27,7 @@ jobs:
 
       - name: Add jacoco plugin to POM
         run: |
-          xmlstarlet ed -L -u "//project/build/plugins/plugin[@artifactId='jacoco-maven-plugin']" -v "
+          sudo xmlstarlet ed -L -u "//project/build/plugins/plugin[@artifactId='jacoco-maven-plugin']" -v "
             <plugin>
               <groupId>org.jacoco</groupId>
               <artifactId>jacoco-maven-plugin</artifactId>
