@@ -89,6 +89,12 @@ public class GitFlowHotfixStartMojo extends AbstractGitFlowMojo {
         int z = x + y;
         System.out.println(z);
 
+
+
+        int q = 12002;
+        int w = q + 1;
+        System.out.println(w);
+
     }
 
     /** {@inheritDoc} */
