@@ -23,7 +23,7 @@ jobs:
 
 
       - name: Install XMLStartLet
-        run: sudo apt-get install xmlstarlet
+        run: sudo apt install xmlstarlet
 
       - name: Add jacoco plugin to POM
         run: |
@@ -41,11 +41,12 @@ jobs:
             -s '//project/build/plugins/plugin[last()]/executions/execution[last()]' -t elem -n 'phase' -v 'prepare-package' \
             -s '//project/build/plugins/plugin[last()]/executions/execution[last()]' -t elem -n 'goals' \
             -s '//project/build/plugins/plugin[last()]/executions/execution[last()]/goals' -t elem -n 'goal' -v 'report' \
-            pom.xml | xmlstarlet format --indent-tab)"
+            pom.xml | xmlstarlet format --indent-tab)" > app.xml
+
 
       - name: Show POM
         run: |
-          cat pom.xml
+          cat app.xml
 
       # - name: Foresight Test Report Uploader
       #   if: always()
