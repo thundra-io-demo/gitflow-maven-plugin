@@ -41,23 +41,22 @@ jobs:
             -s '//x:build/x:plugins/plugin[last()]/executions/execution[last()]' -t elem -n 'phase' -v 'prepare-package' \
             -s '//x:build/x:plugins/plugin[last()]/executions/execution[last()]' -t elem -n 'goals' \
             -s '//x:build/x:plugins/plugin[last()]/executions/execution[last()]/goals' -t elem -n 'goal' -v 'report' \
-            pom.xml | xmlstarlet format --indent-tab)" > app.xml
+            pom.xml | xmlstarlet format --indent-tab)" > pom.xml.tmp && mv pom.xml.tmp pom.xml
 
 
-      - name: Show POM
-        run: |
-          cat app.xml
+      - name: Run maven
+        run: mvn clean install
 
-      # - name: Foresight Test Report Uploader
-      #   if: always()
-      #   uses: actions/upload-artifact@v2
-      #   with:
-      #     name: test-result-junit
-      #     path: target/
+      - name: Foresight Test Report Uploader
+        if: always()
+        uses: actions/upload-artifact@v2
+        with:
+          name: test-result-junit
+          path: target/
 
-      # - name: Foresight Coverage Report Uploader
-      #   if: always()
-      #   uses: actions/upload-artifact@v2
-      #   with:
-      #     name: coverage-artifact
-      #     path: target/site/jacoco/*.xml
+      - name: Foresight Coverage Report Uploader
+        if: always()
+        uses: actions/upload-artifact@v2
+        with:
+          name: coverage-artifact
+          path: target/site/jacoco/*.xml
