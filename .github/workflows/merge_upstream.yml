@@ -29,19 +29,14 @@ jobs:
           git config --global user.name "github-actions"
           git config --global user.email "github-actions@users.noreply.github.com"
 
-          git clone ${{ env.UPSTREAM }} ${{ env.ORIGIN_PATH }}
-          cd ${{ env.ORIGIN_PATH }}
+          git remote add upstream ${{ env.UPSTREAM }}
+          git fetch upstream ${{ env.UPSTREAM_BRANCH_NAME }}:${{ env.BRANCH_NAME }}
 
-          git remote set-url origin "https://x-access-token:${{ env.GITHUB_TOKEN }}@github.com/${{ env.ORIGIN_PATH }}.git"
-          git checkout -b ${{ env.BRANCH_NAME }} || git checkout ${{ env.BRANCH_NAME }}
+          git checkout ${{ env.BRANCH_NAME }}
+
+          git remote set-url origin "https://x-access-token:${{ env.GITHUB_TOKEN }}@github.com/${{ env.ORIGIN_PATH }}"
+          git commit -am "Merge upstream" || true
           git push -f -u origin ${{ env.BRANCH_NAME }}
-      
-      - name: Create pull request
-        uses: peter-evans/create-pull-request@v4
-        with:
-          title: "Merge upstream"
-          head: ${{ env.BRANCH_NAME }}
-          base: ${{ env.UPSTREAM_BRANCH_NAME }}
-          body: "This pull request is created by the [github-actions]"
-        env:
-          working-directory: ${{ env.ORIGIN_PATH }}
+
+          gh pr create --title "Merge upstream" --body "Merge upstream" --base ${{ env.UPSTREAM_BRANCH_NAME }} --head ${{ env.BRANCH_NAME }} --repo "${{ env.ORIGIN_PATH }}" || true
+
