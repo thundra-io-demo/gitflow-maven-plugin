@@ -28,11 +28,10 @@ jobs:
         run: |
           git config --global user.name "github-actions"
           git config --global user.email "github-actions@users.noreply.github.com"
-          git remote add upstream "${{env.UPSTREAM}}"
-          git remote add fork "https://x-access-token:${{env.GITHUB_TOKEN}}@github.com/${{env.ORIGIN_PATH}}.git"
-          git remote -v
-          git checkout -b ${{ env.BRANCH_NAME }}  ||  git checkout ${{ env.BRANCH_NAME }}
-          git fetch upstream
-          git merge upstream/${{ env.UPSTREAM_BRANCH_NAME }}
-          git show-ref
-          git push -f -u fork ${{ env.BRANCH_NAME }}
+
+          git clone ${{ env.UPSTREAM }} ${{ env.ORIGIN_PATH }}
+          cd ${{ env.ORIGIN_PATH }}
+
+          git remote set-url origin "https://x-access-token:${{ env.GITHUB_TOKEN }}@github.com/${{ env.ORIGIN_PATH }}.git"
+          git checkout -b ${{ env.BRANCH_NAME }} || git checkout ${{ env.BRANCH_NAME }}
+          git push -f -u origin ${{ env.BRANCH_NAME }}
