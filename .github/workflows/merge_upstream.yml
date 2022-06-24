@@ -35,3 +35,13 @@ jobs:
           git remote set-url origin "https://x-access-token:${{ env.GITHUB_TOKEN }}@github.com/${{ env.ORIGIN_PATH }}.git"
           git checkout -b ${{ env.BRANCH_NAME }} || git checkout ${{ env.BRANCH_NAME }}
           git push -f -u origin ${{ env.BRANCH_NAME }}
+      
+      - name: Create pull request
+        uses: peter-evans/create-pull-request@v4
+        with:
+          title: "Merge upstream"
+          head: ${{ env.BRANCH_NAME }}
+          base: ${{ env.UPSTREAM_BRANCH_NAME }}
+          body: "This pull request is created by the [github-actions]"
+        env:
+          working-directory: ${{ env.ORIGIN_PATH }}
