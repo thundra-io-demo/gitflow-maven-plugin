@@ -15,8 +15,7 @@ env:
 jobs:
   merge_upstream:
     runs-on: ubuntu-latest
-    permissions:
-      pull-requests: write
+    permissions: write-all
     steps:
 
       - name: Checkout
