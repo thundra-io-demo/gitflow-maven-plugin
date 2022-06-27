@@ -12,10 +12,11 @@ env:
   BRANCH_NAME: auto-upstream-merge
   ORIGIN_PATH: thundra-io-demo/gitflow-maven-plugin
 
+permissions: write-all
+
 jobs:
   merge_upstream:
     runs-on: ubuntu-latest
-    permissions: write-all
     steps:
 
       - name: Checkout
