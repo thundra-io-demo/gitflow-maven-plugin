@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 env:
-  UPSTREAM: "https://github.com/mehmetyz/gitflow-maven-plugin"
+  UPSTREAM: "https://github.com/aleksandr-m/gitflow-maven-plugin"
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   UPSTREAM_BRANCH_NAME: master
   BRANCH_NAME: auto-upstream-merge
@@ -50,4 +50,4 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_USER: ${{ secrets.GITHUB_USER }}
         run: |
-          hub pull-request -m "Merge upstream"  -b  ${{ env.GITHUB_USERNAME}}:${{ env.UPSTREAM_BRANCH_NAME }} -h ${{ env.GITHUB_USERNAME }}:{{ env.BRANCH_NAME }} --no-edit
+          hub pull-request -m "Merge upstream"  -b  ${{ env.GITHUB_USERNAME}}:${{ env.UPSTREAM_BRANCH_NAME }} -h ${{ env.GITHUB_USERNAME }}:${{ env.BRANCH_NAME }} --no-edit || true
