@@ -14,8 +14,6 @@ env:
   ACTIONS_ALLOW_UNSECURE_COMMANDS: true
   GITHUB_USERNAME: thundra-io-demo
 
-permissions: write-all
-
 jobs:
   merge_upstream:
     runs-on: ubuntu-latest
