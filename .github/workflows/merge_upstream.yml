@@ -12,6 +12,7 @@ env:
   BRANCH_NAME: auto-upstream-merge
   ORIGIN_PATH: thundra-io-demo/gitflow-maven-plugin
   ACTIONS_ALLOW_UNSECURE_COMMANDS: true
+  GITHUB_USERNAME: thundra-io-demo
 
 permissions: write-all
 
@@ -49,4 +50,4 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_USER: ${{ secrets.GITHUB_USER }}
         run: |
-          hub pull-request -m "Merge upstream"  -b thundra-io-demo:{{ env.UPSTREAM_BRANCH_NAME }} -h thundra-io-demo:{{ env.BRANCH_NAME }} --no-edit
+          hub pull-request -m "Merge upstream"  -b  ${{ env.GITHUB_USERNAME}}:${{ env.UPSTREAM_BRANCH_NAME }} -h ${{ env.GITHUB_USERNAME }}:{{ env.BRANCH_NAME }} --no-edit
