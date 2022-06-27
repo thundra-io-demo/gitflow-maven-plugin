@@ -11,6 +11,7 @@ env:
   UPSTREAM_BRANCH_NAME: master
   BRANCH_NAME: auto-upstream-merge
   ORIGIN_PATH: thundra-io-demo/gitflow-maven-plugin
+  ACTIONS_ALLOW_UNSECURE_COMMANDS: true
 
 permissions: write-all
 
