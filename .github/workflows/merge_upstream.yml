@@ -7,7 +7,7 @@ on:
 
 env:
   UPSTREAM: "https://github.com/mehmetyz/gitflow-maven-plugin"
-  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  GITHUB_TOKEN: ${{ secrets.MEHMETYZ_TOKEN }}
   UPSTREAM_BRANCH_NAME: master
   BRANCH_NAME: auto-upstream-merge
   ORIGIN_PATH: thundra-io-demo/gitflow-maven-plugin
