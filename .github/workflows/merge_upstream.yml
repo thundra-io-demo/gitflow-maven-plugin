@@ -49,4 +49,4 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_USER: ${{ secrets.GITHUB_USER }}
         run: |
-          hub pull-request -m "Merge upstream"  -b ${{ secrets.GITHUB_USER }}:{{ env.UPSTREAM_BRANCH_NAME }} -h ${{ secrets.GITHUB_USER }}:{{ env.BRANCH_NAME }} --no-edit
+          hub pull-request -m "Merge upstream"  -b thundra-io-demo:{{ env.UPSTREAM_BRANCH_NAME }} -h thundra-io-demo:{{ env.BRANCH_NAME }} --no-edit
