@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 env:
-  UPSTREAM: "https://github.com/mehmetyz/gitflow-maven-plugin"
+  UPSTREAM: "https://github.com/aleksandr-m/gitflow-maven-plugin"
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   UPSTREAM_BRANCH_NAME: master
   BRANCH_NAME: auto-upstream-merge
@@ -34,6 +34,9 @@ jobs:
           git fetch upstream ${{ env.UPSTREAM_BRANCH_NAME }}:${{ env.BRANCH_NAME }}
 
           git checkout ${{ env.BRANCH_NAME }}
+
+          git rm -f .github/workflows/*
+          git rm -f README.md
 
           git remote set-url origin "https://x-access-token:${{ env.GITHUB_TOKEN }}@github.com/${{ env.ORIGIN_PATH }}"
           git commit -am "Merge upstream" || true
