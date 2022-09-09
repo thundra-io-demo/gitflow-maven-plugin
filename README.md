@@ -7,10 +7,9 @@
 
 
 ---
-![Success Details](http://foresight.service.thundra.us/public/api/v1/badge/success?repoId=949230e1-c91a-4b87-989e-6351cf4ab96f)
-![Test Result](http://foresight.service.thundra.us/public/api/v1/badge/test?repoId=949230e1-c91a-4b87-989e-6351cf4ab96f)
-![Utilization](http://foresight.service.thundra.us/public/api/v1/badge/utilization?repoId=949230e1-c91a-4b87-989e-6351cf4ab96f)
-
+![Success Details](https://api-public.service.runforesight.us/api/v1/badge/success?repoId=c9cefa54-5c3d-4471-8bf6-45bf086d9903)
+![Test Result](https://api-public.service.runforesight.us/api/v1/badge/test?repoId=c9cefa54-5c3d-4471-8bf6-45bf086d9903)
+![Utilization](https://api-public.service.runforesight.us/api/v1/badge/utilization?repoId=c9cefa54-5c3d-4471-8bf6-45bf086d9903)
 
 | Report Attribute  | Value   |
 |---|---|
